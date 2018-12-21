@@ -133,6 +133,10 @@ img {
     font-weight: 600;
 }
 
+.big-font {
+    font-size: 1rem;
+}
+
 .promoMessage {
     left: 13px;
     position: relative;

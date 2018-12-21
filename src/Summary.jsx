@@ -175,11 +175,11 @@ class Summary extends Component {
                     </div>
                 </div>
                 <div className="divider" />
-                <div className='row block-display'>
+                <div className='row big-font block-display'>
                     <div className='cols inline-block left-align'>
                         Est. Total
                     </div>
-                    <div className='cols inline-block right-align'>
+                    <div className='cols inline-block font-weight-bold right-align'>
                         ${this.state.total.toFixed(2)}
                     </div>
                 </div>
