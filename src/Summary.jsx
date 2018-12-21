@@ -187,6 +187,7 @@ class Summary extends Component {
                                     <span className='cols left-align discountedPrice'>{testData.items[0].discount.discountPrice}</span>
                                     <span className='cols right-align'>Qty: {testData.summary.quantityTotal}</span>
                                     <span className='cols left-align actualPrice'>{testData.items[0].price}</span>
+                                    <span className='cols left-align actualPrice productColorDesc'>Actual Color: {testData.items[0].color}</span>
                                 </div>
                             </div>
                         </form>
