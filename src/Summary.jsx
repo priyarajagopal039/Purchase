@@ -214,7 +214,7 @@ class Summary extends Component {
                         </form>
                     </div>
                 </div>
-                <div className={'row' + (this.state.isPromoMessageUpdated ? 'showPromotionMessage' : 'hidePromotionMessage')}>
+                <div className={'row ' + ((this.state.isPromoCodeVisible && this.state.isPromoMessageUpdated) ? 'showPromotionMessage' : 'hidePromotionMessage')}>
                     <div className='cols left-align promoMessage '>{this.state.promoMessage}</div>
                 </div>
             </div >
