@@ -15,7 +15,8 @@ class Summary extends Component {
             productSection: 'See item details',
             total: testData.summary.grandTotal,
             promoMessage: '',
-            isPromoMessageUpdated: false
+            isPromoMessageUpdated: false,
+            promotionDiscount: 0
         };
         this.handleFlyout = this.handleFlyout.bind(this);
         this.handlePromoSection = this.handlePromoSection.bind(this);
@@ -47,13 +48,15 @@ class Summary extends Component {
                 console.log('Promo already applied');
                 this.setState({
                     promoMessage: 'Promotion code already applied!',
-                    isPromoMessageUpdated: true
+                    isPromoMessageUpdated: true,
+                    promotionDiscount: promoDiscount
                 });
             } else {
                 this.setState({
                     total: newTotal,
                     promoMessage: 'Promotion code applied successfully',
-                    isPromoMessageUpdated: true
+                    isPromoMessageUpdated: true,
+                    promotionDiscount: promoDiscount
                 });
             }
         } else {
@@ -83,6 +86,7 @@ class Summary extends Component {
     };
 
     handlePromoSection(e) {
+        e.stopPropagation();
         this.togglePromoCode();
         if (!this.state.isPromoCodeVisible) {
             this.setState({
@@ -94,7 +98,6 @@ class Summary extends Component {
             });
         }
         console.log('Promo section clicked' + this.state.isPromoCodeVisible);
-        e.stopPropagation();
     };
 
     handleProductSection(e) {
@@ -119,8 +122,8 @@ class Summary extends Component {
     };
 
     handleApplyPromotion(e) {
-        this.reCalculateTotal();
         e.stopPropagation();
+        this.reCalculateTotal();
     };
 
     render() {
@@ -145,7 +148,7 @@ class Summary extends Component {
                         </a>
                         <Flyout handleMouseDown={this.handleFlyout} visibility={this.state.visible} />
                     </div>
-                    <div className='cols inline-block right-align discount'>
+                    <div className='cols inline-block right-align discount font-weight-bold'>
                         - ${testData.summary.pickupDiscount.toFixed(2)}
                     </div>
                 </div>
@@ -163,6 +166,12 @@ class Summary extends Component {
                     </div>
                     <div className='cols inline-block right-align'>
                         ${testData.summary.taxTotal.toFixed(2)}
+                    </div>
+                </div>
+                <div className={'row block-display discount ' + (this.state.isPromoMessageUpdated ? 'showPromotionMessage' : 'hidePromotionMessage')}>
+                    <div className='cols left-align promoMessage'>Promotion Discount</div>
+                    <div className='cols inline-block right-align font-weight-bold'>
+                        - ${this.state.promotionDiscount}
                     </div>
                 </div>
                 <div className="divider" />
@@ -204,6 +213,9 @@ class Summary extends Component {
                             <button id="applyButton" onClick={this.handleApplyPromotion}>Apply</button>
                         </form>
                     </div>
+                </div>
+                <div className={'row' + (this.state.isPromoMessageUpdated ? 'showPromotionMessage' : 'hidePromotionMessage')}>
+                    <div className='cols left-align promoMessage '>{this.state.promoMessage}</div>
                 </div>
             </div >
         );

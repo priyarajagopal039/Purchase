@@ -18,7 +18,6 @@ div {
 
 .discount {
     color: #e11e24;
-    font-weight: 600;
 }
 
 .row {
@@ -44,7 +43,8 @@ div {
 #flyout {
     position: relative;
     cursor: pointer;
-    font-size: .75rem;
+    font-size: .875rem;
+    color: #e11e24;
 }
 
 .tableRow {
@@ -90,7 +90,7 @@ div {
 }
 
 .hidePromotionMessage {
-    display: 'none';
+    display: none !important;
 }
 
 img {
@@ -126,5 +126,16 @@ img {
     color: #6d6e71;
     font-size: 0.75rem;
     text-decoration: none;
+    font-weight: 500;
+}
+
+.font-weight-bold {
+    font-weight: 600;
+}
+
+.promoMessage {
+    left: 13px;
+    position: relative;
+    color: #e11e24;
     font-weight: 500;
 }
