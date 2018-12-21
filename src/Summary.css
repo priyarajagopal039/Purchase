@@ -18,6 +18,7 @@ div {
 
 .discount {
     color: #e11e24;
+    font-weight: 600;
 }
 
 .row {
@@ -103,4 +104,20 @@ img {
     position: relative;
     top: -10px;
     width: 67%;
+}
+
+.actualPrice {
+    color: #6d6e71;
+    font-weight: 600;
+    text-decoration: line-through;
+    position: relative;
+    float: left;
+    right: 3px;
+}
+
+.discountedPrice {
+    color: #0f0f10;
+    font-weight: 600;
+    position: relative;
+    right: 40px;
 }

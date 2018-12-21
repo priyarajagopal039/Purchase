@@ -146,7 +146,7 @@ class Summary extends Component {
                         <Flyout handleMouseDown={this.handleFlyout} visibility={this.state.visible} />
                     </div>
                     <div className='cols inline-block right-align discount'>
-                        ${testData.summary.pickupDiscount.toFixed(2)}
+                        - ${testData.summary.pickupDiscount.toFixed(2)}
                     </div>
                 </div>
                 <div className='row block-display'>
@@ -180,9 +180,15 @@ class Summary extends Component {
                         <button className={'collapsible ' + (this.state.isProductVisible ? 'active' : '')} onMouseDown={this.handleProductSection}>{this.state.productSection}</button>
                     </div>
                     <div className={'content ' + (this.state.isProductVisible ? 'show' : '')}>
-                        <form className='productDetailsForm row'>
-                            <img className='left-align' alt="product thumbanil" src={testData.items[0].thumbnailUrl} />
-                            <div className='cols right-align' id='itemDesc'>{testData.items[0].productName}</div>
+                        <form className='productDetailsForm'>
+                            <div className='row'>
+                                <img className='left-align' alt="product thumbanil" src={testData.items[0].thumbnailUrl} />
+                                <div className='cols right-align' id='itemDesc'><span>{testData.items[0].productName}</span><br /><br />
+                                    <span className='cols left-align discountedPrice'>{testData.items[0].discount.discountPrice}</span>
+                                    <span className='cols right-align'>Qty: {testData.summary.quantityTotal}</span>
+                                    <span className='cols left-align actualPrice'>{testData.items[0].price}</span>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
