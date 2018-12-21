@@ -166,6 +166,15 @@ class Summary extends Component {
                 </div>
                 <div className="divider" />
                 <div className='row block-display'>
+                    <div className='cols inline-block left-align'>
+
+                    </div>
+                    <div className='cols inline-block right-align'>
+
+                    </div>
+                </div>
+                <div className="divider" />
+                <div className='row block-display'>
                     <div className='cols left-align'>
                         <button className={'collapsible ' + (this.state.isPromoCodeVisible ? 'active' : '')} onMouseDown={this.handlePromoSection}>{this.state.promoSection}</button>
                     </div>
@@ -176,18 +185,7 @@ class Summary extends Component {
                         </form>
                     </div>
                 </div>
-
-                <div className="divider" />
-                <div className='row block-display'>
-                    <div className='cols inline-block left-align'>
-
-                    </div>
-                    <div className='cols inline-block right-align'>
-                        ${testData.summary.taxTotal.toFixed(2)}
-                    </div>
-                </div>
             </div >
-
         );
     }
 }
