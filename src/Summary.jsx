@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Summary.css';
+import './Accordion.css';
 import testData from './test-data.json';
 import Flyout from './Flyout';
 
