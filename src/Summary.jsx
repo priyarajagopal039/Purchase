@@ -40,26 +40,24 @@ class Summary extends Component {
             let merchandisingFees = testData.summary.merchandisingFeesTotal.toFixed(2);
             let tax = testData.summary.taxTotal.toFixed(2);
             let promoDiscount = (subTotal * 10) / 100;
-            debugger;
             let totalDiscount = parseFloat(pickupDiscount) + parseFloat(promoDiscount);
             newTotal = (parseFloat(subTotal) + parseFloat(merchandisingFees) + parseFloat(tax)) - totalDiscount;
+            if (newTotal === this.state.total) {
+                console.log('Promo already applied');
+                this.setState({
+                    promoMessage: 'Promotion code already applied!',
+                    isPromoMessageUpdated: true
+                });
+            } else {
+                this.setState({
+                    total: newTotal,
+                    promoMessage: 'Promotion code applied successfully',
+                    isPromoMessageUpdated: true
+                });
+            }
         } else {
             this.setState({
                 promoMessage: 'Invalid Promo Code',
-                isPromoMessageUpdated: true
-            });
-        }
-
-        if (newTotal === this.state.total) {
-            console.log('Promo already applied');
-            this.setState({
-                promoMessage: 'Promotion code already applied!',
-                isPromoMessageUpdated: true
-            });
-        } else {
-            this.setState({
-                total: newTotal,
-                promoMessage: 'Promotion code applied successfully',
                 isPromoMessageUpdated: true
             });
         }
@@ -178,9 +176,7 @@ class Summary extends Component {
                         </form>
                     </div>
                 </div>
-                <div className={'row' + (this.state.isPromoMessageUpdated ? 'showPromotionMessage' : 'hidePromotionMessage')}>
-                    <div className='cols left-align'>{this.state.promoMessage}</div>
-                </div>
+
                 <div className="divider" />
                 <div className='row block-display'>
                     <div className='cols inline-block left-align'>
