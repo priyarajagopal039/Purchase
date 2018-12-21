@@ -12,6 +12,7 @@ class Summary extends Component {
             isPromoCodeVisible: false,
             isProductVisible: false,
             promoSection: 'Apply promo code',
+            productSection: 'See item details',
             total: testData.summary.grandTotal,
             promoMessage: '',
             isPromoMessageUpdated: false
@@ -98,6 +99,15 @@ class Summary extends Component {
 
     handleProductSection(e) {
         this.toggleProductSection();
+        if (!this.state.isProductVisible) {
+            this.setState({
+                productSection: 'Hide item details'
+            });
+        } else {
+            this.setState({
+                productSection: 'See item details'
+            });
+        }
         console.log('Product accordion clicked' + this.state.isProductVisible);
         e.stopPropagation();
     };
@@ -114,9 +124,9 @@ class Summary extends Component {
     };
 
     render() {
-        let isVisible = '';
+        let isVisible = 'hide';
         if (this.state.visible) {
-            isVisible = "show";
+            isVisible = 'show';
         }
         return (
             <div className='table'>
@@ -130,10 +140,10 @@ class Summary extends Component {
                 </div>
                 <div className='row block-display'>
                     <div className='cols inline-block left-align'>
-                        <button id='flyout' className={isVisible} onMouseDown={this.handleFlyout}>
+                        <a href='#' id='flyout' className={isVisible} onMouseDown={this.handleFlyout}>
                             Pickup savings
+                        </a>
                         <Flyout handleMouseDown={this.handleFlyout} visibility={this.state.visible} />
-                        </button>
                     </div>
                     <div className='cols inline-block right-align discount'>
                         ${testData.summary.pickupDiscount.toFixed(2)}
@@ -166,11 +176,14 @@ class Summary extends Component {
                 </div>
                 <div className="divider" />
                 <div className='row block-display'>
-                    <div className='cols inline-block left-align'>
-
+                    <div className='cols left-align'>
+                        <button className={'collapsible ' + (this.state.isProductVisible ? 'active' : '')} onMouseDown={this.handleProductSection}>{this.state.productSection}</button>
                     </div>
-                    <div className='cols inline-block right-align'>
-
+                    <div className={'content ' + (this.state.isProductVisible ? 'show' : '')}>
+                        <form className='productDetailsForm'>
+                            <img className='left-align' alt="product thumbanil" src={testData.items[0].thumbnailUrl} />
+                            <div className='cols inline-block right-align' id='itemDesc'>{testData.items[0].productName}</div>
+                        </form>
                     </div>
                 </div>
                 <div className="divider" />

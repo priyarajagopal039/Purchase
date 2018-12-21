@@ -90,3 +90,15 @@ div {
 .hidePromotionMessage {
     display: 'none';
 }
+
+img {
+    width: 25%;
+    height: 25%;
+}
+
+#itemDesc {
+    white-space: normal;
+    font-size: .875rem;
+    position: relative;
+    top: -10px;
+}

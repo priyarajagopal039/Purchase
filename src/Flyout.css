@@ -12,6 +12,7 @@
 #flyoutPopover.show {
   height: 75px;
   width: 170px;
+  font-size: .75rem
 }
 
 /*#flyoutMenu h2 a {
